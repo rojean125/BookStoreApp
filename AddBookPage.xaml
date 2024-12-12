@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bookStoreApp.AddBookPage"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout 
+        Padding="20"
+        BackgroundColor="White">
+        <Button
+            ImageSource="leftarrow.png"
+            HeightRequest="70"
+            WidthRequest="70"
+            HorizontalOptions="Start"
+            BackgroundColor="Transparent"
+            x:Name="backButton"
+            />
+        <Entry 
+            x:Name="TitleEntry" 
+            Placeholder="Title" 
+            TextColor="Black"/>
+        <Entry 
+            x:Name="AuthorEntry" 
+            Placeholder="Author"
+            TextColor="Black"/>
+        <Entry 
+            x:Name="GenreEntry" 
+            Placeholder="Genre"
+            TextColor="Black"/>
+        <Editor 
+            x:Name="DescriptionEditor" 
+            Placeholder="Description" 
+            AutoSize="TextChanges"
+            TextColor="Black"/>
+        <Entry 
+            x:Name="PriceEntry" 
+            Placeholder="Price" 
+            Keyboard="Numeric"
+            TextColor="Black"/>
+        <Frame 
+            BorderColor="Gray" 
+            CornerRadius="5" 
+            Padding="5" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            BackgroundColor="Transparent">
+            <StackLayout>
+                <Image 
+                    x:Name="BookCoverImage" 
+                    HeightRequest="150" 
+                    WidthRequest="150" />
+                <Button 
+                    Text="Choose Book Cover Image" 
+                    Clicked="OnChooseImageClicked"
+                    Background="Transparent"/>
+            </StackLayout>
+        </Frame>
+        <Button 
+            Text="Add Book" 
+            Clicked="OnAddBookClicked"
+            />
+    </StackLayout>
+</ContentPage>

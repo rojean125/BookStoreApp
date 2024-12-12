@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bookStoreApp.HomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView
+        BackgroundColor="White">
+        <StackLayout 
+            Padding="20">
+            <HorizontalStackLayout
+                Margin="0,20">
+                <Image
+                    Source="openbook.png"
+                    HeightRequest="30"/>
+                <Label 
+                    Text="Rox Book Store" 
+                    TextColor ="Black" 
+                    FontSize="30"
+                    FontFamily="SFPRO"
+                    FontAttributes="Bold"
+                    Margin="10,10"
+                    HorizontalOptions="StartAndExpand" />
+            </HorizontalStackLayout>
+            <StackLayout Padding="20">
+                <CollectionView 
+                    ItemsSource="{Binding}" 
+                    ItemsLayout="HorizontalList"
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="BooksScrollView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BorderColor="Transparent" 
+                                Padding="10" 
+                                HasShadow="True"
+                                BackgroundColor="White"
+                                WidthRequest="200"
+                                Margin="10">
+                                <VerticalStackLayout Spacing="5">
+
+                                    <Frame
+                                        CornerRadius="00"
+                                        BorderColor="Transparent"    
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Center">
+                                        <Image 
+                                            Source="{Binding Image}" 
+                                            HeightRequest="150" 
+                                            WidthRequest="100"
+                                            Aspect="AspectFill" />
+                                    </Frame>
+                                    <Label 
+                                        Text="{Binding Title}" 
+                                        FontSize="18"
+                                        FontFamily="SFPRO"  
+                                        TextColor="Black" 
+                                        HorizontalOptions="Center"/>
+                                    <Button 
+                                        Text="{Binding Price, StringFormat='$ {0:N2}'}"
+                                        BackgroundColor="Transparent"
+                                        FontFamily="SFPRO"
+                                        FontSize="11"
+                                        Margin="0,-10"
+                                        Clicked="OnBookClicked" 
+                                        CommandParameter="{Binding}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <Label 
+                Text="Explore by Genre"
+                TextColor="Black"
+                FontSize="27" 
+                FontFamily="SFPRO"
+                FontAttributes="Bold"
+                Margin="10,20,0,10" />
+            <CarouselView x:Name="GenreCarousel">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Button 
+                            Text="{Binding}" 
+                            FontSize="24"
+                            FontFamily="SFPRO"
+                            Clicked="OnGenreClicked"
+                            BackgroundColor="Transparent"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Label 
+                Text="Recommended for you"
+                TextColor="Black"
+                FontSize="27" 
+                FontFamily="SFPRO"
+                FontAttributes="Bold"
+                Margin="10,20,0,10" />
+            <StackLayout Padding="20">
+                <CollectionView 
+                    ItemsSource="{Binding}" 
+                    ItemsLayout="HorizontalList"
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="RecommendedScrollView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BorderColor="Transparent" 
+                                Padding="10" 
+                                HasShadow="True"
+                                BackgroundColor="White"
+                                WidthRequest="200"
+                                Margin="10">
+                                <VerticalStackLayout Spacing="5">
+                                    <Frame
+                                        CornerRadius="30"
+                                        BorderColor="Transparent"
+                                        BackgroundColor="Transparent">
+                                        <Image 
+                                            Source="{Binding Image}" 
+                                            HeightRequest="150" 
+                                            Aspect="AspectFit" />
+                                    </Frame>
+                                    <Label 
+                                        Text="{Binding Title}" 
+                                        FontSize="18"
+                                        FontFamily="SFPRO"  
+                                        TextColor="Black" 
+                                        HorizontalOptions="Center"/>
+                         
+                                    <Button 
+                                        Text="{Binding Price, StringFormat='$ {0:N2}'}"
+                                        BackgroundColor="Transparent"
+                                        FontFamily="SFPRO"
+                                        FontSize="11"
+                                        Margin="0,-10"
+                                        Clicked="OnBookClicked" 
+                                        CommandParameter="{Binding}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
